@@ -7,7 +7,36 @@
     <link rel="shortcut icon" type="image/jpg" href="./assets/favicon.png" />
     <link rel="stylesheet" href="./assets/main.css" />
     <script src="./scripts/main.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Tic Tac Toe</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Tic Tac Toe</h1>
+
+    <nav>
+      <button class="reset-game">Reset Game</button>
+    </nav>
+    <div id="game-board">
+      <div class="box" id="1"></div>
+      <div class="box" id="2"></div>
+      <div class="box" id="3"></div>
+      <div class="box" id="4"></div>
+      <div class="box" id="5"></div>
+      <div class="box" id="6"></div>
+      <div class="box" id="7"></div>
+      <div class="box" id="8"></div>
+      <div class="box" id="9"></div>
+      <div id="result">
+        <div id="winner"></div>
+        <button class="reset-game">Play Again ?</button>
+      </div>
+    </div>
+  </body>
 </html>
