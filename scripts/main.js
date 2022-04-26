@@ -14,18 +14,16 @@ const game = (function () {
     resetBtn.addEventListener("click", resetGame);
   });
 
-  gamePlay();
+  boxes.forEach((box) => {
+    box.addEventListener("click", gamePlay);
+  });
 
-  function gamePlay() {
-    boxes.forEach((box) => {
-      box.addEventListener("click", function (e) {
-        e.preventDefault();
-        renderPlayerPlay(e);
-        if (compFlag) {
-          setTimeout(renderCompPlay, 0.3 * 1000);
-        }
-      });
-    });
+  function gamePlay(e) {
+    e.preventDefault();
+    renderPlayerPlay(e);
+    if (compFlag) {
+      setTimeout(renderCompPlay, 0.3 * 1000);
+    }
   }
 
   function renderPlayerPlay(e) {
@@ -62,6 +60,9 @@ const game = (function () {
     winnerDisplay.innerHTML = `
     ${winner}`;
     result.style.visibility = "visible";
+    boxes.forEach((box) => {
+      box.removeEventListener("click", gamePlay);
+    });
   }
 
   function resetGame() {
@@ -70,6 +71,7 @@ const game = (function () {
     boxes.forEach((box) => {
       box.innerHTML = "";
       box.classList.remove("won", "tie");
+      box.addEventListener("click", gamePlay);
     });
     for (let score in gamePlayScore) {
       delete gamePlayScore[score];
