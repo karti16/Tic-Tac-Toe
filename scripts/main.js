@@ -66,6 +66,7 @@ const game = (function () {
     result.style.display = "none";
     boxes.forEach((box) => {
       box.innerHTML = "";
+      box.style.backgroundColor = "";
     });
     for (let score in gamePlayScore) {
       delete gamePlayScore[score];
@@ -100,6 +101,7 @@ const game = (function () {
         .split("")
         .filter((item) => gamePlayScore[item] !== "x").length;
       if (len == 0) {
+        winmap[i].split("").forEach((item) => winningBgColor(item));
         renderResult("player Won");
         compFlag = false;
       }
@@ -112,10 +114,15 @@ const game = (function () {
         .split("")
         .filter((item) => gamePlayScore[item] !== "o").length;
       if (len == 0) {
+        winmap[i].split("").forEach((item) => winningBgColor(item));
         renderResult("Computer Won");
         compFlag = false;
       }
     }
+  }
+
+  function winningBgColor(id) {
+    document.getElementById(id).style.backgroundColor = "#22e66fad";
   }
 
   return {};

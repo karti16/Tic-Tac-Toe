@@ -387,7 +387,7 @@ h1 {
   height: 100px;
   text-align: center;
   font-size: 80px;
-  color: rgb(120, 155, 185);
+  color: rgb(255, 255, 255);
   user-select: none;
 }
 .box:hover {
