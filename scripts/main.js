@@ -48,6 +48,9 @@ const game = (function () {
       whoWon();
     } else {
       renderResult("Match Tied");
+      boxes.forEach((box) => {
+        box.classList.add("tie");
+      });
     }
   }
 
@@ -58,15 +61,15 @@ const game = (function () {
   function renderResult(winner) {
     winnerDisplay.innerHTML = `
     ${winner}`;
-    result.style.display = "flex";
+    result.style.visibility = "visible";
   }
 
   function resetGame() {
     compFlag = true;
-    result.style.display = "none";
+    result.style.visibility = "hidden";
     boxes.forEach((box) => {
       box.innerHTML = "";
-      box.style.backgroundColor = "";
+      box.classList.remove("won", "tie");
     });
     for (let score in gamePlayScore) {
       delete gamePlayScore[score];
@@ -102,7 +105,7 @@ const game = (function () {
         .filter((item) => gamePlayScore[item] !== "x").length;
       if (len == 0) {
         winmap[i].split("").forEach((item) => winningBgColor(item));
-        renderResult("player Won");
+        renderResult("Player Won");
         compFlag = false;
       }
     }
@@ -122,7 +125,7 @@ const game = (function () {
   }
 
   function winningBgColor(id) {
-    document.getElementById(id).style.backgroundColor = "#22e66fad";
+    document.getElementById(id).classList.add("won");
   }
 
   return {};
