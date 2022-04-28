@@ -68,7 +68,7 @@ const game = (function () {
       updateGamePlay((pos = num), (value = "o"));
       document.getElementById(num).innerHTML = `${
         compHardLevel == "noob"
-          ? '<img src="/assets/noob1.png" alt="noob-ai" />'
+          ? '<img src="/assets/noob2.png" alt="noob-ai" />'
           : '<img src="/assets/pro2.png" alt="noob-ai" />'
       }`;
       checkWinner(gamePlayScore, aiPlayer);
