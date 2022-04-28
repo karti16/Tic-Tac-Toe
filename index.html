@@ -14,18 +14,35 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@600&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"
+    />
     <title>Tic Tac Toe</title>
   </head>
   <body>
+    <button class="reset-game reset-icon">
+      <span class="mdi mdi-restart"></span>
+    </button>
     <h1>Tic Tac Toe</h1>
+    <nav>
+      <p>Choose opponent</p>
+      <button class="noob-ai">
+        <img src="/assets/noob2.png" alt="noob-ai" />
+        <div>I'm noob</div>
+      </button>
 
+      <button class="pro-ai">
+        <img src="/assets/pro2.png" alt="noob-ai" />
+        <div>Beat me if you can</div>
+      </button>
+    </nav>
     <div id="result">
       <div id="winner"></div>
       <button class="reset-game">Play Again ?</button>
     </div>
-
     <div id="game-board">
+      <div class="box" id="0"></div>
       <div class="box" id="1"></div>
       <div class="box" id="2"></div>
       <div class="box" id="3"></div>
@@ -34,10 +51,6 @@
       <div class="box" id="6"></div>
       <div class="box" id="7"></div>
       <div class="box" id="8"></div>
-      <div class="box" id="9"></div>
     </div>
-    <nav>
-      <button class="reset-game">Reset Game</button>
-    </nav>
   </body>
 </html>
