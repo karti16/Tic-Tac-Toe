@@ -1,5 +1,7 @@
 const game = (function () {
   //game pos and value are stored in object
+  //minimax
+
   const gamePlayScore = {};
   const winmap = ["123", "456", "789", "147", "258", "369", "159", "357"];
   let positions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
