@@ -55,7 +55,7 @@ const game = (function () {
     if (e.target.textContent != "x" && e.target.textContent != "o") {
       updateGamePlay((pos = e.target.id), (value = "x"));
       compFlag = true;
-      e.target.innerHTML = '<img src="/assets/human.png" alt="noob-ai" />';
+      e.target.innerHTML = '<img src="assets/human.png" alt="noob-ai" />';
       checkWinner(gamePlayScore, huPlayer);
     } else {
       compFlag = false;
