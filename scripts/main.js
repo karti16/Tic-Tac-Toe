@@ -1,6 +1,4 @@
 const game = (function () {
-  //minimax
-
   let gamePlayScore = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   let compFlag = true;
   const huPlayer = "x";
