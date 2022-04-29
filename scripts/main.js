@@ -14,14 +14,19 @@ const game = (function () {
   const noobBtn = document.querySelector(".noob-ai");
   const proBtn = document.querySelector(".pro-ai");
 
+  noobBtn.style.backgroundColor = "#22e66fad";
   noobBtn.onclick = function () {
     compHardLevel = "noob";
-    proBtn.disabled = true;
+    noobBtn.style.backgroundColor = "#22e66fad";
+    proBtn.style.backgroundColor = "";
+    resetGame();
   };
 
   proBtn.onclick = function () {
     compHardLevel = "pro";
-    noobBtn.disabled = true;
+    proBtn.style.backgroundColor = "#22e66fad";
+    noobBtn.style.backgroundColor = "";
+    resetGame();
   };
 
   resetBtns.forEach((resetBtn) => {
@@ -32,22 +37,11 @@ const game = (function () {
     box.addEventListener("click", gamePlay);
   });
 
-  renderGame(gamePlayScore);
-
-  function renderGame(scoreObj) {
-    for (let i = 0; i < scoreObj.length; i++) {
-      if (scoreObj[i] == "x" || scoreObj[i] == "o") {
-        document.getElementById(i).textContent = scoreObj[i];
-      }
-    }
-  }
-
   function gamePlay(e) {
-    console.log(compHardLevel);
     e.preventDefault();
     renderPlayerPlay(e);
     if (compFlag) {
-      setTimeout(renderCompPlay, 0.1 * 1000);
+      renderCompPlay();
     }
   }
 
@@ -55,7 +49,7 @@ const game = (function () {
     if (e.target.textContent != "x" && e.target.textContent != "o") {
       updateGamePlay((pos = e.target.id), (value = "x"));
       compFlag = true;
-      e.target.innerHTML = '<img src="/assets/human.png" alt="noob-ai" />';
+      e.target.textContent = "x";
       checkWinner(gamePlayScore, huPlayer);
     } else {
       compFlag = false;
@@ -66,12 +60,9 @@ const game = (function () {
     if (noOfEmptyCell()) {
       let num = getRandNum();
       updateGamePlay((pos = num), (value = "o"));
-      document.getElementById(num).innerHTML = `${
-        compHardLevel == "noob"
-          ? '<img src="assets/noob2.png" alt="noob-ai" />'
-          : '<img src="assets/pro2.png" alt="noob-ai" />'
-      }`;
+      document.getElementById(num).textContent = "o";
       checkWinner(gamePlayScore, aiPlayer);
+      compFlag = true;
     } else {
       renderResult("Match Tied");
       boxes.forEach((box) => {
@@ -92,8 +83,6 @@ const game = (function () {
   }
 
   function resetGame() {
-    proBtn.disabled = false;
-    noobBtn.disabled = false;
     compFlag = true;
     result.style.visibility = "hidden";
     result.classList.remove("won", "tie");
